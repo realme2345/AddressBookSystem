@@ -26,6 +26,7 @@ namespace AddressBook
                     AddressBook.ListPeople();
                     break ;
                 }
+            Console.Read();
         }
     }
 }

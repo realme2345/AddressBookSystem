@@ -90,6 +90,7 @@ namespace AddressBook
                 Console.WriteLine("Person removed. Press any key to continue.");
                 Console.ReadKey();
             }
+            Console.Read();
         }
         
 
