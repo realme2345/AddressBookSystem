@@ -14,9 +14,24 @@ namespace AddressBook
         /// <summary>
         /// Displaying the Welcome message 
         /// </summary>
-        public static void DispalyUC1Address() //creating moethod for a class
+        public static void DispalyAddress() //creating moethod for a class
         {
-            Console.WriteLine("Welcome to the Address Book Program ");
+            Console.Write("Enter First Name: "); //Taking the inputs from user
+            Console.ReadLine();
+            Console.Write("Enter Last Name: ");
+            Console.ReadLine();
+            Console.Write("Enter Phone Number: ");
+            Console.ReadLine();
+            Console.Write("Enter Address 1: ");
+            string[] addresses = new string[2]; // creating Array for to store the address
+            addresses[0] = Console.ReadLine();
+            Console.Write("Enter Address 2 (Optional): ");
+            addresses[1] = Console.ReadLine();
+            foreach (string element in addresses)
+            {
+                Console.WriteLine(element);
+
+            }
         }
     }
 }

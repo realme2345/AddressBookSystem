@@ -10,7 +10,7 @@ namespace AddressBook
     {
         static void Main(string[] args)
         {
-            AddressBook.DispalyUC1Address();
+            AddressBook.DispalyAddress();
         }
     }
 }
