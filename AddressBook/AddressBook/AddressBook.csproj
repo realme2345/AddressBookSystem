@@ -46,9 +46,6 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="AddressBook.cs" />
-    <Compile Include="UC2AddressBook.cs" />
-    <Compile Include="UC3AddressBook.cs" />
-    <Compile Include="UC4AddressBook.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
