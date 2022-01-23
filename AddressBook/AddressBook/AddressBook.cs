@@ -9,15 +9,15 @@ namespace AddressBook
     /// <summary>
     /// Address Book
     /// </summary>
-    internal class AddressBook
+    class AddressBook
     {
         private string FirstName { get; set; }
         private string LastName { get; set; }
         private string PhoneNumber { get; set; }
         private string[] Addresses { get; set; }
 
-        public static List<AddressBook> People = new List<AddressBook>();
-        // creating list for to store the all address of people
+        public static Dictionary<string,AddressBook> People = new Dictionary<string,AddressBook>();
+        // creating Dictionaries for to store the all address of people
 
         public static void AddPerson()  //creating metod for a class
         {
@@ -39,11 +39,8 @@ namespace AddressBook
             addresses[1] = Console.ReadLine();
             person.Addresses = addresses;
 
-            People.Add(person);
+            People.Add(person.FirstName,person);// adding the peoples to the Dictionaries
         }
-        /// <summary>
-        /// Displaying the Welcome message 
-        /// </summary>
         private static void PrintPerson(AddressBook person)
         {
             Console.WriteLine("First Name: " + person.FirstName);
@@ -62,7 +59,7 @@ namespace AddressBook
                 return;
             }
             Console.WriteLine("Here are the current people in your address book:\n");
-            foreach (var Element in People)
+            foreach (var Element in People.Values)
             {
                 PrintPerson(Element);
             }
@@ -70,30 +67,6 @@ namespace AddressBook
             Console.WriteLine("\nPress any key to continue.");
             Console.ReadKey();
         }
-        public static void RemovePerson() //this method for remove the people with respect their names
-        {
-            Console.WriteLine("Enter the first name of the person you would like to remove.");
-            string firstName = Console.ReadLine();
-            AddressBook person = People.FirstOrDefault(x => x.FirstName.ToLower() == firstName.ToLower());
-            if (person == null)
-            {
-                Console.WriteLine("That person could not be found. Press any key to continue");
-                Console.ReadKey();
-                return;
-            }
-            Console.WriteLine("Are you sure you want to remove this person from your address book? (Y/N)");
-            PrintPerson(person);
-
-            if (Console.ReadKey().Key == ConsoleKey.Y)
-            {
-                People.Remove(person);
-                Console.WriteLine("Person removed. Press any key to continue.");
-                Console.ReadKey();
-            }
-            Console.Read();
-        }
-        
-
     }
 }
 

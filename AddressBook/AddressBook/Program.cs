@@ -11,7 +11,7 @@ namespace AddressBook
     /// Employee Wage
     /// </summary>
     /// <param name="args"></param>
-        static void Main(string[] args) //Ability to add multiple person to address book
+        static void Main(string[] args) //Ability to add multiple person to address book and stored in Dictionaries
         {
             Console.WriteLine(" Add Person :");
             int num = Convert.ToInt32(Console.ReadLine());
