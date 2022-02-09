@@ -12,42 +12,55 @@ namespace AddressBook
     class AddressBook
     {
         private string FirstName { get; set; }
-        private string LastName { get; set; }
-        private string PhoneNumber { get; set; }
-        private string[] Addresses { get; set; }
+        public string LastName { get; set; }
+        public string PhoneNumber { get; set; }
+        public string State { get; set; }
+        public string City { get; set; }
+        public string ZipCode { get; set; }
+        public string Addresses { get; set; }
 
-        public static Dictionary<string,AddressBook> People = new Dictionary<string,AddressBook>();
-        // creating Dictionaries for to store the all address of people
-
+        public static Dictionary<string, AddressBook> People = new Dictionary<string, AddressBook>();
+        public static Dictionary<string, AddressBook> AllPeople = new Dictionary<string, AddressBook>();
+        //creating Dictionaries for to store the all address of people
+        public static void DublicatePerson()//It is used to Add Number Address avoiding dublicate persons based on thier names
+        {
+            foreach (var Element in AllPeople)
+            {
+               
+                    if (!AllPeople.ContainsKey(Element.Key))
+                    throw new CustomException(CustomException.ExceptionType.PERSON_ALREADY_EXISTS, "Already Exists");
+               
+            }
+            AddPerson();
+        }
         public static void AddPerson()  //creating metod for a class
         {
             AddressBook person = new AddressBook(); // creating a object for to access instance method or variable
-
             Console.Write("Enter First Name: "); // Taking the inputs from user
             person.FirstName = Console.ReadLine();
-
             Console.Write("Enter Last Name: ");
             person.LastName = Console.ReadLine();
-
             Console.Write("Enter Phone Number: ");
             person.PhoneNumber = Console.ReadLine();
-
             Console.Write("Enter Address 1: ");
-            string[] addresses = new string[2]; // creating Array for to store the address
-            addresses[0] = Console.ReadLine();
-            Console.Write("Enter Address 2 (Optional): ");
-            addresses[1] = Console.ReadLine();
-            person.Addresses = addresses;
-
-            People.Add(person.FirstName,person);// adding the peoples to the Dictionaries
+            person.Addresses = Console.ReadLine();
+            Console.WriteLine("Enter State");
+            person.State = Console.ReadLine();
+            Console.WriteLine("Enter a City");
+            person.City = Console.ReadLine();
+            Console.WriteLine("Enter the Zip Code");
+            person.ZipCode = Console.ReadLine();
+            People.Add(person.FirstName, person);// adding the peoples to the Dictionaries
         }
         private static void PrintPerson(AddressBook person)
         {
             Console.WriteLine("First Name: " + person.FirstName);
             Console.WriteLine("Last Name: " + person.LastName);
             Console.WriteLine("Phone Number: " + person.PhoneNumber);
-            Console.WriteLine("Address 1: " + person.Addresses[0]);
-            Console.WriteLine("Address 2: " + person.Addresses[1]);
+            Console.WriteLine("Address : " + person.Addresses);
+            Console.WriteLine("State : " + person.State);
+            Console.WriteLine("City : " + person.City);
+            Console.WriteLine("ZipCode :" + person.ZipCode);
             Console.WriteLine("-------------------------------------------");
         }
         public static void ListPeople() //This method used to show people who are present in Address book
@@ -69,4 +82,6 @@ namespace AddressBook
         }
     }
 }
+   
+
 

@@ -13,13 +13,21 @@ namespace AddressBook
     /// <param name="args"></param>
         static void Main(string[] args) //Ability to add multiple person to address book and stored in Dictionaries
         {
-            Console.WriteLine(" Add Person :");
-            int num = Convert.ToInt32(Console.ReadLine());
-            int x = 1;
-            while (x <= num)
+            Console.WriteLine("Enter a Number of Address to Add :");
+            int n=Convert.ToInt32(Console.ReadLine());
+            AddressBook.AddPerson();
+            int i = 1;
+            while (i <= n)
             {
-                AddressBook.AddPerson();
-                x++;
+                try
+                {
+                    AddressBook.DublicatePerson();//this method for avoid dublicate persons in address book
+                    i++;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
             }
             AddressBook.ListPeople();
         }
