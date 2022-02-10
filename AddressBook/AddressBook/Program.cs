@@ -8,7 +8,7 @@ namespace AddressBook
 {
     internal class Program
     {/// <summary>
-     /// Employee Wage
+     ///Address Book
      /// </summary>
      /// <param name="args"></param>
         public static List<AddressBook> list = new List<AddressBook>();
@@ -17,7 +17,7 @@ namespace AddressBook
             AddPerson();
             //AddPerson();
             ListPeople();
-            SearchPerson();
+            SearchPerson(list);
         }
         public static void AddPerson()//method for adding multiple members
         {
@@ -32,7 +32,7 @@ namespace AddressBook
                                      "Gaggilla",
                                      "9133139939",
                                      "Telanagana",
-                                     "VJW",
+                                     "HYD",
                                      "507022",
                                        "ASD"));
             list.Add(new AddressBook("Nagi", "Gajjella", "89826336522", "Telanagan", "Khamma", "507122", "shdhd"));
@@ -63,21 +63,26 @@ namespace AddressBook
                 PrintPerson(Element);
             }
         }
-        public static void SearchPerson() //this method for search the people with respect their names
+        public static void SearchPerson(List<AddressBook>list) //this method for search the people with respect their names
         {
             Console.WriteLine("Enter the City name of the person you would like to Know:");
             string city = Console.ReadLine();
-            AddressBook person = list.FirstOrDefault(x => x.City.ToLower() == city.ToLower());
-            while (person != null)
+            List<AddressBook> person= list.FindAll(x => x.City.ToLower() == city.ToLower());
+            try
             {
-                Console.WriteLine("Person is present succefull");
-                PrintPerson(person);
-                Console.ReadKey();
-                return;
+                while (person != null)
+                {
+                    Console.WriteLine("Person is present succefull");
+                    Console.ReadKey();
+                    foreach (var Element in person)
+                    {
+                        PrintPerson(Element);
+                    }
+                }
             }
-            if (person == null)
+            catch (Exception ex)
             {
-                Console.WriteLine("Person is not present");
+                Console.WriteLine(ex.Message);
             }
         }
     }
