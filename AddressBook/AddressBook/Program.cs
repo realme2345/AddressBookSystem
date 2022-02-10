@@ -21,15 +21,15 @@ namespace AddressBook
         }
         public static void AddPerson()//method for adding multiple members
         {
-            list.Add(new AddressBook("Raja",
+             list.Add(new AddressBook("Raja",
                                      "Kongara",
                                      "9133139939",
                                      "Telanagana",
                                      "HYD",
                                      "507143",
                                        "ASDR"));
-            list.Add(new AddressBook("Nari",
-                                     "Gaggilla",
+             list.Add(new AddressBook("Nari",
+                                      "Gaggilla",
                                      "9133139939",
                                      "Telanagana",
                                      "HYD",
@@ -50,7 +50,7 @@ namespace AddressBook
             Console.WriteLine("-------------------------------------------");
         }
         public static void ListPeople() //This method used to show people who are present in Address book
-        {
+        { 
             if (list.Count == 0)
             {
                 Console.WriteLine("Your address book is empty. Press any key to continue.");
@@ -67,13 +67,16 @@ namespace AddressBook
         {
             Console.WriteLine("Enter the City name of the person you would like to Know:");
             string city = Console.ReadLine();
+            Console.WriteLine();
             List<AddressBook> person= list.FindAll(x => x.City.ToLower() == city.ToLower());
             try
             {
-                while (person != null)
+                if (person != null)
                 {
-                    Console.WriteLine("Person is present succefull");
-                    Console.ReadKey();
+                    int s = person.Count;
+                    Console.WriteLine("Number of persons :"+s);
+                    Console.WriteLine("------------------------------------------------------------");
+                    Console.WriteLine();
                     foreach (var Element in person)
                     {
                         PrintPerson(Element);
