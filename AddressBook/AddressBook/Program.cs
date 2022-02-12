@@ -65,7 +65,7 @@ namespace AddressBook
         }
         public static void SortedBasedOnCity(List<AddressBook>list) //this method for sorted the persons based on their city
         {
-            var person= list.OrderByDescending(x => x.City);
+            var person= list.OrderByDescending(x => x.FirstName);
             foreach (var Element in person)
             {
                  PrintPerson(Element);
