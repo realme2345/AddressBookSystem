@@ -18,20 +18,21 @@ namespace AddressBook
             //AddPerson();
             ListPeople();
             SortedBasedOnCity(list);
+            SortedBasedOnState(list);
         }
         public static void AddPerson()//method for adding multiple members
         {
             list.Add(new AddressBook("Raja",
                                      "Kongara",
                                      "9133139939",
-                                     "Telanagana",
+                                     "Andhra",
                                      "HYD",
                                      "507143",
                                        "ASDR"));
             list.Add(new AddressBook("Nari",
                                      "Gaggilla",
                                      "9133139939",
-                                     "Telanagana",
+                                     "Tamilnaadu",
                                      "HYD",
                                      "507022",
                                        "ASD"));
@@ -65,10 +66,22 @@ namespace AddressBook
         }
         public static void SortedBasedOnCity(List<AddressBook>list) //this method for sorted the persons based on their city
         {
-            var person= list.OrderByDescending(x => x.FirstName);
+            Console.WriteLine("Sorted by thier City");
+            Console.WriteLine("-------------------------------");
+            var person= list.OrderByDescending(x => x.City);
             foreach (var Element in person)
             {
                  PrintPerson(Element);
+            }
+        }
+        public static void SortedBasedOnState(List<AddressBook> list) //this method for sorted the persons based on their state
+        {
+            Console.WriteLine("Sorted by thier state");
+            Console.WriteLine("-------------------------------");
+            var person = list.OrderBy(x => x.State);
+            foreach (var Element in person)
+            {
+                PrintPerson(Element);
             }
         }
     }
