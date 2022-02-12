@@ -11,31 +11,38 @@ namespace AddressBook
      ///Address Book
      /// </summary>
      /// <param name="args"></param>
-        public static List<AddressBook> list = new List<AddressBook>();
+        public static Dictionary<string,AddressBook> people = new Dictionary<string, AddressBook>();
         static void Main(string[] args) //Ability to add multiple person to address book and stored in Dictionaries
         {
-            AddPerson();
-            //AddPerson();
+            Console.WriteLine(" Add Person :");
+            int num = Convert.ToInt32(Console.ReadLine());
+            int x = 1;
+            while (x <= num)
+            {
+                AddPerson();
+                x++;
+            }
             ListPeople();
-            SearchPerson(list);
+            SearchPerson(people);
         }
         public static void AddPerson()//method for adding multiple members
         {
-             list.Add(new AddressBook("Raja",
-                                     "Kongara",
-                                     "9133139939",
-                                     "Telanagana",
-                                     "HYD",
-                                     "507143",
-                                       "ASDR"));
-             list.Add(new AddressBook("Nari",
-                                      "Gaggilla",
-                                     "9133139939",
-                                     "Telanagana",
-                                     "HYD",
-                                     "507022",
-                                       "ASD"));
-            list.Add(new AddressBook("Nagi", "Gajjella", "89826336522", "Telanagan", "Khamma", "507122", "shdhd"));
+                AddressBook person = new AddressBook(); // creating a object for to access instance method or variable
+                Console.Write("Enter First Name: "); // Taking the inputs from user
+                person.FirstName = Console.ReadLine();
+                Console.Write("Enter Last Name: ");
+                person.LastName = Console.ReadLine();
+                Console.Write("Enter Phone Number: ");
+                person.PhoneNumber = Console.ReadLine();
+                Console.Write("Enter Address 1: ");
+                person.Addresses = Console.ReadLine();
+                Console.WriteLine("Enter State");
+                person.State = Console.ReadLine();
+                Console.WriteLine("Enter a City");
+                person.City = Console.ReadLine();
+                Console.WriteLine("Enter the Zip Code");
+                person.ZipCode = Console.ReadLine();
+                people.Add(person.City, person);// adding the peoples to the Dictionaries
         }
 
         public static void PrintPerson(AddressBook person)//this method to print the persons
@@ -51,37 +58,30 @@ namespace AddressBook
         }
         public static void ListPeople() //This method used to show people who are present in Address book
         { 
-            if (list.Count == 0)
+            if (people.Count == 0)
             {
                 Console.WriteLine("Your address book is empty. Press any key to continue.");
                 Console.ReadKey();
                 return;
             }
             Console.WriteLine("Here are the current people in your address book:\n");
-            foreach (var Element in list)
+            foreach (var Element in people.Values)
             {
                 PrintPerson(Element);
             }
         }
-        public static void SearchPerson(List<AddressBook>list) //this method for search the people with respect their names
+        public static void SearchPerson(Dictionary<string, AddressBook> people) //this method for search the people with respect their names
         {
             Console.WriteLine("Enter the City name of the person you would like to Know:");
             string city = Console.ReadLine();
-            Console.WriteLine();
-            List<AddressBook> person= list.FindAll(x => x.City.ToLower() == city.ToLower());
+            people.ContainsKey(city);
             try
             {
-                if (person != null)
+                foreach (var Element in people)
                 {
-                    int s = person.Count;
-                    Console.WriteLine("Number of persons :"+s);
-                    Console.WriteLine("------------------------------------------------------------");
-                    Console.WriteLine();
-                    foreach (var Element in person)
-                    {
-                        PrintPerson(Element);
-                    }
+                    PrintPerson(Element.Value);
                 }
+                Console.WriteLine(people.Count);
             }
             catch (Exception ex)
             {

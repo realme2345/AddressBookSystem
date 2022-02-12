@@ -19,16 +19,16 @@ namespace AddressBook
         public string ZipCode;
         public string Addresses;
         //Creating a constructer
-        public AddressBook(string firstName, string lastName, string phoneNumber, string state, string city, string zipCode, string addresses)
-        {
-            this.FirstName = firstName; //Assigning data
-            this.LastName = lastName;
-            this.PhoneNumber = phoneNumber;
-            this.State = state;
-            this.City = city;
-            this.ZipCode = zipCode;
-            this.Addresses = addresses;
-        }
+        //public AddressBook(string firstName, string lastName, string phoneNumber, string state, string city, string zipCode, string addresses)
+        //{
+        //    this.FirstName = firstName; //Assigning data
+        //    this.LastName = lastName;
+        //    this.PhoneNumber = phoneNumber;
+        //    this.State = state;
+        //    this.City = city;
+        //    this.ZipCode = zipCode;
+        //    this.Addresses = addresses;
+        //}
     }
 }
    
