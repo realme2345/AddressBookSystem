@@ -21,7 +21,7 @@ namespace AddressBook
         //Creating a constructer 
         public AddressBook(string firstName, string lastName, string phoneNumber, string state, string city, string zipCode, string addresses)
         {
-            this.FirstName = firstName; //Assigning data
+            this.FirstName = firstName;//Assigning data
             this.LastName = lastName;
             this.PhoneNumber = phoneNumber;
             this.State = state;

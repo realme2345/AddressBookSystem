@@ -17,7 +17,7 @@ namespace AddressBook
             AddPerson();
             //AddPerson();
             ListPeople();
-            SearchPerson(list);
+            SortedBasedOnCity(list);
         }
         public static void AddPerson()//method for adding multiple members
         {
@@ -63,26 +63,12 @@ namespace AddressBook
                 PrintPerson(Element);
             }
         }
-        public static void SearchPerson(List<AddressBook>list) //this method for search the people with respect their names
+        public static void SortedBasedOnCity(List<AddressBook>list) //this method for sorted the persons based on their city
         {
-            Console.WriteLine("Enter the City name of the person you would like to Know:");
-            string city = Console.ReadLine();
-            List<AddressBook> person= list.FindAll(x => x.City.ToLower() == city.ToLower());
-            try
+            var person= list.OrderByDescending(x => x.City);
+            foreach (var Element in person)
             {
-                while (person != null)
-                {
-                    Console.WriteLine("Person is present succefull");
-                    Console.ReadKey();
-                    foreach (var Element in person)
-                    {
-                        PrintPerson(Element);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
+                 PrintPerson(Element);
             }
         }
     }
