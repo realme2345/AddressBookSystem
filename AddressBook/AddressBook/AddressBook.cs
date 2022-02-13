@@ -1,5 +1,9 @@
-﻿using System;
+﻿using CsvHelper;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -94,6 +98,22 @@ namespace AddressBook
                 PrintPerson(Element);
             }
         }
+        //public static void CsvData()
+        //{
+        //    string path = @"D:\git\AddressBook\AddressBookSystem\AddressBook\AddressBook\AddressBook.cs";
+        //    //List<AddressBook> addressBook=JsonConvert.DeserializeObject<List<AddressBook>>(File.ReadAllText(path));
+        //    using (var reader = new StreamReader(path))
+        //    using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+        //    {
+        //        var records = csv.GetRecord<AddressBook>().ToString();
+        //        Console.WriteLine("Read the Data succefully from the file");
+        //        foreach (var address in records)
+        //        {
+        //            Console.WriteLine(address.ToString());
+        //        }
+        //    }
+
+        //}
     }
 }
    
